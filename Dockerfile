@@ -1,4 +1,4 @@
-FROM java
+FROM java:7
 
 MAINTAINER Pavel Popov <schmooser@gmail.com>
 
@@ -15,7 +15,7 @@ ENV TC_URL http://download.jetbrains.com/teamcity/${TC_PACKAGE}.tar.gz
 # Postgres JDBC drivers
 ENV PG_JDBC=postgresql-9.4-1205.jdbc4.jar
 RUN mkdir -p ${TEAMCITY_DATA_PATH}/lib/jdbc && \
-    curl -vL --output ${TEAMCITY_DATA_PATH}/lib/jdbc https://jdbc.postgresql.org/download/${PG_JDBC}
+    curl -vL --output ${TEAMCITY_DATA_PATH}/lib/jdbc/${PG_JDBC} https://jdbc.postgresql.org/download/${PG_JDBC}
 
 VOLUME ${TEAMCITY_DATA_PATH}
 EXPOSE 8111
